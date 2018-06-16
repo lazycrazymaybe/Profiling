@@ -1,0 +1,158 @@
+.overiding_overview a p{
+	color: #676A6D;
+}
+.overiding_overview a p:hover{
+	color: #0081C2;
+}
+
+.header_font{
+	font-size: 10px;
+}
+
+.form_title{
+	font-size: 18px;
+	padding-top: 20px;
+}
+
+.form_style label{
+	width: 100%;
+	padding-bottom: 5px;
+}
+
+.form_style input,
+.form_style select,
+.form_style textarea{
+	width: 100%;
+	padding-bottom: 5px;
+	border-style: ridge;
+	border-radius: 5px;
+	border-color: #eaeaea;
+	height: 35px;
+	padding-left: 10px;
+}
+.form_style textarea{
+	height: 85px;
+}
+
+.form_style label input:hover,
+.form_style label select:hover,
+.form_style label textarea:hover{
+	box-shadow: 3px 5px 10px 5px #888888;
+}
+
+
+.form_style label input:focus,
+.form_style label select:focus,
+.form_style label textarea:focus{
+	box-shadow: 3px 10px 50px 5px #888888;
+}
+
+.submit_button input{
+	background-color: #337AB7;
+	color: #fff;
+	border-radius: 5px;
+	width: 100px;
+	height: 40px;
+	float: right;
+}
+
+
+table{
+	border: 0;
+	width: 60%;
+}
+table th, td{
+	padding: 5px;
+}
+
+.dialog_background{
+	width: 100%;
+}
+
+dialog{
+	padding: 0;
+}
+.confirm_removal{
+	z-index: 1;
+	border-radius: 10px;
+	border-style: none;
+	width: 400px;
+	height: 200px;
+}
+.dialog_header{
+	background-color: #434A54;
+	height: 20%;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+.dialog_header p{
+	padding-top: 10px;
+	text-align: center;
+	font-size: 18px;
+	color: #fff;
+}
+
+.dialog_content p{
+	color: #9A9A9A;
+	font-size: 18px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.dialog_footer{
+	background-color: #F5F6F8;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	width: 100%;
+	height: 30%;
+}
+.dialog_footer button{
+	float: right;
+	margin-right: 10px;
+	height: 40px;
+	color: #fff;
+}
+.dialog_footer #confirm{
+	border-radius: 5px;
+}
+.dialog_footer #cancel{
+	background-color: #9A9A9A;
+	border-radius: 5px;
+}
+.back_button{
+	color: #676A6D;
+}
+.back_button:hover{
+	color: #00AAFF;
+}
+.action_buttons button{
+	width: 60px;
+	border-radius: 8px;
+	font-size: 12px;
+	height: 40px;
+}
+
+.action_buttons .change_button{
+	background-color: #337AB7;
+	color: #fff;
+}
+
+.action_buttons .served_button{
+	background-color: #686B6D;
+	color: #fff;
+}
+
+.action_buttons .serve_button{
+	background-color: #39A31C;
+	color: #fff;
+}
+
+.remove_button{
+	background-color: #D9534F;
+	color: #fff;
+}
+
+.removed_button{
+	background-color: #AEB7C2;
+	color: #000;
+}
