@@ -1,19 +1,4 @@
-<!-- LEFT SIDEBAR -->
-<div id="sidebar-nav" class="sidebar">
-	<div class="sidebar-scroll">
-		<nav>
-			<ul class="nav">
-				<li><a href="<?=base_url()?>Administrators/dashboard" class=""><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-				<li><a href="<?=base_url().'Administrators/employeesList'?>" class=""><i class="lnr lnr-users"></i> <span>Employees</span></a></li>
-				<li><a href="<?=base_url().'Administrators/addProfilePage'?>" class=""><i class="lnr lnr-users"></i> <span>Add Profile</span></a></li>
-				<li><a href="<?=base_url()?>Administrators/profiles" class=""><i class="fa fa-list-alt"></i> <span>Profiles</span></a></li>
-				<li><a href="<?=base_url()?>Administrators/removedProfiles" class=""><i class="lnr lnr-inbox"></i> <span>Removed Profiles</span></a></li>
-			</ul>
-		</nav>
-	</div>
-</div>
-<!-- END LEFT SIDEBAR
-	<!-- MAIN -->
+<!-- MAIN -->
 <div class="main">
 	<!-- MAIN CONTENT -->
 	<div class="main-content">

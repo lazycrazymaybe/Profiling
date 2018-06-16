@@ -1,23 +1,4 @@
-<!-- LEFT SIDEBAR -->
-<div id="sidebar-nav" class="sidebar" style="width: 220px">
-	<div class="sidebar-scroll">
-		<nav>
-			<ul class="nav">
-				<li><a href="<?=base_url()?>Administrators/dashboard" class=""><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-				<li><a href="<?=base_url().'Administrators/employeesList'?>" class=""><i class="lnr lnr-users"></i> <span>Employees</span></a></li>
-				<li><a href="<?=base_url().'Administrators/addProfilePage'?>" class=""><i class="lnr lnr-users"></i> <span>Add Profile</span></a></li>
-				<li><a href="<?=base_url()?>Administrators/profiles" class=""><i class="fa fa-list-alt"></i> <span>Profiles</span></a></li>
-				
-				<li><a href="<?=base_url()?>Administrators/removedProfiles" class=""><i class="lnr lnr-inbox"></i> <span>Removed Profiles</span></a></li>
-			</ul>
-
-		</nav>
-	</div>
-</div>
-<!-- END LEFT SIDEBAR
-
-<!-- END LEFT SIDEBAR -->
-		<!-- MAIN -->
+<!-- MAIN -->
 <div class="main">
 	<div class="main-content">
 		<div class="container-fluid">
@@ -27,7 +8,7 @@
 						<div class="panel-heading"  style="background: #E5E5E5">
 							<h3 class="panel-title"><span id="bloter_title">ADD BLOTTER RECORD FOR</span> <b><?= $fname." ".$mname." ".$lname?></b></h3>
 							<div class="right">
-								<a href="<?= base_url()?>Administrators/casePage/<?= $profileID?>"><button type="button" class="back_button">Back to cases</button></a>
+								<a href="<?= base_url()?>Routes/casePage/<?= $profileID?>"><button type="button" class="back_button">Back to cases</button></a>
 							</div>
 						</div>
 						<div class="panel-body">

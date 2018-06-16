@@ -7,12 +7,6 @@
 			date_default_timezone_set('Asia/Manila');
 		}
 
-		public function trial(){
-			$this->db->select()->from('tbl_addprofile')->join('tbl_address', 'tbl_addprofile.profileID = tbl_address.profileID')->where('isactive',1);
-			$query = $this->db->get();
-			return $query->result();
-		}
-
 		/** 
 			*@param username type(string), password type(string)
 			*@return Array()

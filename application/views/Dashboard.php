@@ -1,20 +1,3 @@
-<!-- LEFT SIDEBAR -->
-<div id="sidebar-nav" class="sidebar" style="width: 220px"
->
-	<div class="sidebar-scroll">
-		<nav>
-			<ul class="nav">
-				<li><a href="<?=base_url()?>Administrators/dashboard" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-				<li><a href="<?=base_url().'Administrators/employeesList'?>" class=""><i class="lnr lnr-users"></i> <span>Employees</span></a></li>
-				<li><a href="<?=base_url().'Administrators/addProfilePage'?>" class=""><i class="lnr lnr-users"></i> <span>Add Profile</span></a></li>
-				<li><a href="<?=base_url()?>Administrators/profiles" class=""><i class="fa fa-list-alt"></i> <span>Profiles</span></a></li>
-				<li><a href="<?=base_url()?>Administrators/removedProfiles" class=""><i class="lnr lnr-inbox"></i> <span>Removed Profiles</span></a></li>
-			</ul>
-		</nav>
-	</div>
-</div>
-<!-- END LEFT SIDEBAR -->
-		<!-- MAIN -->
 <div class="main">
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
@@ -28,7 +11,7 @@
 					<div class="row">
 						<div class="overiding_overview">
 							<div class="col-md-3">
-								<a href="<?=base_url()?>Administrators/employeesList">
+								<a href="<?=base_url()?>Routes/employeesList">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-users" style="margin-top: 15px;"></i></span>
 										<p>
@@ -39,7 +22,7 @@
 								</a>
 							</div>
 							<div class="col-md-3">
-								<a href="<?=base_url()?>Administrators/employeesList">
+								<a href="<?=base_url()?>Routes/employeesList">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-users" style="margin-top: 15px;"></i></span>
 										<p>
@@ -50,7 +33,7 @@
 								</a>
 							</div>
 							<div class="col-md-3">
-								<a href="<?=base_url()?>Administrators/profiles">
+								<a href="<?=base_url()?>Routes/profiles">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-list-alt" style="margin-top: 15px;"></i></span>
 										<p>
@@ -176,7 +159,7 @@
 						<div class="panel-footer">
 							<div class="row">
 								<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> This <?= date('F',strtotime('this month'))?>. Only 10 recent registrations are displayed.</span></div>
-								<div class="col-md-6 text-right"><a href="<?=base_url().'Admins/users'?>" class="btn btn-primary">View All Users</a></div>
+								<div class="col-md-6 text-right"><a href="<?=base_url().'Routes/employeesList'?>" class="btn btn-primary">View All Employees</a></div>
 							</div>
 						</div>
 					</div>
@@ -228,7 +211,7 @@
 						<div class="panel-footer">
 							<div class="row">
 								<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Today <?= date('F')?>. Only 20 recent logs are displayed</span></div>
-								<div class="col-md-6 text-right"><a href="<?=base_url().'Admins/logs'?>" class="btn btn-primary">View All Logs</a></div>
+								<div class="col-md-6 text-right"><a href="<?=base_url().'Routes/profiles'?>" class="btn btn-primary">View All Profiles</a></div>
 							</div>
 						</div>
 					</div>
