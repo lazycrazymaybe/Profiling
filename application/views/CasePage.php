@@ -1,19 +1,3 @@
-<!-- LEFT SIDEBAR -->
-<div id="sidebar-nav" class="sidebar" style="width: 220px">
-	<div class="sidebar-scroll">
-		<nav>
-			<ul class="nav">
-				<li><a href="<?=base_url()?>Administrators/dashboard" class=""><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-				<li><a href="<?=base_url().'Administrators/employeesList'?>" class=""><i class="lnr lnr-users"></i> <span>Employees</span></a></li>
-				<li><a href="<?=base_url().'Administrators/addProfilePage'?>" class=""><i class="lnr lnr-users"></i> <span>Add Profile</span></a></li>
-				<li><a href="<?=base_url()?>Administrators/profiles" class=""><i class="fa fa-list-alt"></i> <span>Profiles</span></a></li>
-				<li><a href="<?=base_url()?>Administrators/removedProfiles" class=""><i class="lnr lnr-inbox"></i> <span>Removed Profiles</span></a></li>
-			</ul>
-		</nav>
-	</div>
-</div>
-<!-- END LEFT SIDEBAR
-
 <!-- MAIN -->
 <div class="main">
 	<!-- MAIN CONTENT -->
@@ -26,9 +10,9 @@
 							<h3 class="panel-title">List Of <?= $profile->lname.', '.$profile->fname.' '.$profile->mname.'\'s'.' cases.'?></h3>
 							<input type="hidden" name="profileID" value="<?= $profile->profileID?>" id="profile_ID">
 							<div class="right">
-								<a href="<?= base_url()?>Administrators/profiles"><button type="button" class="back_button">Back to profiles</button></a>
+								<a href="<?= base_url()?>Routes/profiles"><button type="button" class="back_button">Back to profiles</button></a>
 							</div>
-							<a href="<?= base_url()?>Administrators/addCasePage/<?= $profile->profileID?>"><button type="button" id="createUser" data-toggle="modal" data-target="#edit-data" class="btn btn-success" style="margin-top:10px;background-color:#676A6D;width: 90px; height: 30px;"><i class="fa fa-plus"></i> Add Case </button></a>
+							<a href="<?= base_url()?>Routes/addCasePage/<?= $profile->profileID?>"><button type="button" id="createUser" data-toggle="modal" data-target="#edit-data" class="btn btn-success" style="margin-top:10px;background-color:#676A6D;width: 90px; height: 30px;"><i class="fa fa-plus"></i> Add Case </button></a>
 							<span id="error_message"></span>
 						</div>
 						<div class="panel-body no-padding">
@@ -60,7 +44,7 @@
 											<td><?= $case->description?></td>
 											<td>
 												<div class="action_buttons">
-													<a href="<?= base_url()?>Administrators/updateCasePage/<?= $case->caseID?>"><button class="change_button" id="<?= $case->caseID?>">Change</button></a>
+													<a href="<?= base_url()?>Routes/updateCasePage/<?= $case->caseID?>"><button class="change_button" id="<?= $case->caseID?>">Change</button></a>
 													<?php if($case->status == "Served"){ ?>
 													<button disabled class="served_button">Served</button>
 													<?php }if($case->status == "Not Served"){ ?>

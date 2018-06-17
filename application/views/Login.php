@@ -25,19 +25,20 @@
 		<div class="vertical-align-wrap">
 			<div class="vertical-align-middle">
 				<div class="auth-box overiding">
-					<div class="left" style="height: 0">
+					<div class="left">
 						<div class="content">
 							<div class="header">
-								<?php if($success == 0){ ?>
+								<?php $text = ''; if($success != 1){ ?>
+									<?php $success == 0 ? $text = 'Invalid Username or Password' : $text = 'This Account Is Already Login To Other Device'?>
 								<div class="alert alert-danger alert-dismissible" role="alert">
 									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<i class="fa fa-info-circle"></i> Incorect Username or Password
+									<i class="fa fa-info-circle"></i> <?= $text ?>
 								</div>
-								<?php } ?>
+								<?php }?>
 								<div class="logo text-center"><img src="<?php echo base_url().'assets/img/camlogo.png'?>" alt="Klorofil Logo"></div>
 								<p class="lead">Login to your account</p>
 							</div>
-							<form class="form-auth-small" method="post" action="<?= base_url().'Administrators/index'?>">
+							<form class="form-auth-small" method="post" action="<?= base_url().'Logins/index'?>">
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Username</label>
 									<input type="inpur" class="form-control" id="username" name="username" placeholder="Username">

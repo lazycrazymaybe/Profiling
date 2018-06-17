@@ -1,21 +1,4 @@
-<!-- LEFT SIDEBAR -->
-<div id="sidebar-nav" class="sidebar" style="width: 220px">
-	<div class="sidebar-scroll">
-		<nav>
-			<ul class="nav">
-				<li><a href="<?=base_url()?>Administrators/dashboard" class=""><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-				<li><a href="<?=base_url().'Administrators/employeesList'?>" class=""><i class="lnr lnr-users"></i> <span>Employees</span></a></li>
-				<li><a href="<?=base_url().'Administrators/addProfilePage'?>" class=""><i class="lnr lnr-users"></i> <span>Add Profile</span></a></li>
-				<li><a href="<?=base_url()?>Administrators/profiles" class="active"><i class="fa fa-list-alt"></i> <span>Profiles</span></a></li>
-				<li><a href="<?=base_url()?>Administrators/removedProfiles" class=""><i class="lnr lnr-inbox"></i> <span>Removed Profiles</span></a></li>
-			</ul>
-		</nav>
-	</div>
-</div>
-<!-- END LEFT SIDEBAR
-
-<!-- END LEFT SIDEBAR -->
-		<!-- MAIN -->
+<!-- MAIN -->
 <div class="main">
 	<div class="main-content">
 		<div class="container-fluid">
@@ -183,7 +166,7 @@
 								</div>
 								<div class="col-md-12 submit_button">
 									<input type="hidden" class="form-control" name="add_profile_option" value="updateProfile" id="add_profile_option">
-									<input type="hidden" class="form-control" name="yes_no" value="yes" id="yes_no">
+									<input type="hidden" class="form-control" name="yes_no" value="no" id="yes_no">
 									<input type="hidden" class="form-control" name="addressID" value="<?=$data->addressID?>" id="addressID">
 									<input type="hidden" class="form-control" name="profileID" value="<?=$data->profileID?>" id="profileID">
 									<input type="submit" id="add_profile_action" name="add_profile_action" value="Update Profile" style="width: 150px" />
