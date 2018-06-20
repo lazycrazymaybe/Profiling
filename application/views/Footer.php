@@ -167,7 +167,7 @@ $(document).ready(function(){
 	    "serverSide":true,  
 	    "order":[],
 	    "ajax":{  
-            url:"<?=base_url()?>Administrators/ajaxEmployeeList",  
+            url:"<?=base_url()?>Users/ajaxEmployeeList",  
             type:"POST"  
         }, 
        "columnDefs":[  
@@ -191,7 +191,7 @@ $(document).ready(function(){
 		var isActive = $('#isActive').val();
 		var userType = $('#userType').val();
 		var date = $('#date').val();
-		var url = "<?=base_url()?>Administrators/"+$('#option').val();
+		var url = "<?=base_url()?>Users/"+$('#option').val();
 		if(fname != "" && lname != "" && mname != "" && contact_number != "" && username != ""){
 			if(fname.length >= 2 && lname.length >= 2 && mname.length >= 2 && contact_number.length >= 11 && username.length >= 4){
 				$.ajax({
@@ -277,7 +277,7 @@ $(document).ready(function(){
 		$('#password').hide();
 		$('#password-label').hide();
 		$.ajax({
-			url:"<?= base_url()?>Administrators/fetchUser",
+			url:"<?= base_url()?>Users/fetchUser",
 			method: "POST",
 			data:{empID:empID},
 			dataType:'json',
@@ -371,7 +371,7 @@ $(document).ready(function(){
 		var cwhome = $('#cwhome').val();
 		var cstatus = $('#cstatus').val();
 		var cdescription = $('#cdescription').val();
-		var url = "<?=base_url()?>Administrators/"+$('#add_case_action').val();
+		var url = "<?=base_url()?>Cases/"+$('#add_case_action').val();
 		console.log(url)
 		console.log(caseID)
 		if(ctitle == "" || clupon == "" || cdate == "" || cwhome == "" || cstatus == "" || cdescription == ""){
@@ -404,7 +404,7 @@ $(document).ready(function(){
 		$('#dialog_body').html('This action will permanently delete this case to your records.');
 		$('#confirm').on('click',function(){
 			$.ajax({
-				url: "<?= base_url()?>Administrators/removeCase",
+				url: "<?= base_url()?>Cases/removeCase",
 				method:"POST",
 				data:{profileID:profileID,caseID:caseID},
 				success:function(data){

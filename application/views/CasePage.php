@@ -48,7 +48,7 @@
 													<?php if($case->status == "Served"){ ?>
 													<button disabled class="served_button">Served</button>
 													<?php }if($case->status == "Not Served"){ ?>
-													<a href="<?= base_url()?>Administrators/changeStatus/<?= $case->caseID?>"><button class="serve_button">Serve</button></a>
+													<a href="<?= base_url()?>Cases/changeStatus/<?= $case->caseID?>"><button class="serve_button">Serve</button></a>
 													<?php } ?>
 													<?php if($case->status == "Served"){ ?>
 													<button type="button" class="remove_button" id="<?= $case->caseID?>">Remove</button>
