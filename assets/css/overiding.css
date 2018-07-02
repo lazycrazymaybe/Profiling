@@ -156,3 +156,8 @@ dialog{
 	background-color: #AEB7C2;
 	color: #000;
 }
+
+.input-error{
+	border-color: #9B1A1D;
+	transition: border-color .5s;
+}

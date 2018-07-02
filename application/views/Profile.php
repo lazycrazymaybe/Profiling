@@ -18,15 +18,15 @@
 					</div>
 					<!-- END PROFILE HEADER -->
 					<!-- MODAL -->
-						<div id="edit-data" class="modal fade">
-						  <div class="modal-dialog">
-						    <!-- Modal content-->
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal">&times;</button>
-						        <h4 class="modal-title text-center">Update Profile</h4>
-						      </div>
-						      <div class="modal-body">
+					<div id="edit-data" class="modal fade">
+					  <div class="modal-dialog">
+					    <!-- Modal content-->
+					    <div class="modal-content">
+					      	<div class="modal-header">
+					        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+					        	<h4 class="modal-title text-center">Update Profile</h4>
+					      	</div>
+					      	<div class="modal-body">
 						        <form method="post" id="user-form" novalidate>
 						        	<div class="form-group">
 										    <label for="fname">First Name</label>
@@ -52,24 +52,23 @@
 										    <label for="password1">Password</label>
 										    <input type="password" class="form-control" name="password1" id="password1" aria-describedby="password1" placeholder="Password">
 										</div>	
-						      </div>
-							      <div class="modal-footer">
-							      	<input type="hidden" class="form-control" name="option" id="option">
-							      	<input type="hidden" class="form-control" name="empID" id="empID">
-							      	<input type="hidden" class="form-control" name="password" id="password">
-							      	<input type="hidden" class="form-control" name="isActive" id="isActive">
-							      	<input type="hidden" class="form-control" name="userType" id="userType">
-							      	<input type="hidden" class="form-control" name="date" id="date">
-							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							        <input type="submit" id="action" name="action" value="Update" class="btn btn-primary"/>
-							      </div>
-						     		</form>
-
 						    </div>
+							<div class="modal-footer">
+						      	<input type="hidden" class="form-control" name="option" id="option">
+						      	<input type="hidden" class="form-control" name="empID" id="empID">
+						      	<input type="hidden" class="form-control" name="password" id="password">
+						      	<input type="hidden" class="form-control" name="isActive" id="isActive">
+						      	<input type="hidden" class="form-control" name="userType" id="userType">
+						      	<input type="hidden" class="form-control" name="date" id="date">
+						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						        <input type="submit" id="action" name="action" value="Update" class="btn btn-primary"/>
+						    </div>
+					     		</form>
+					    </div>
 
-						  </div>
-						</div>
-						<!-- MODAL -->
+					  </div>
+					</div>
+					<!-- MODAL -->
 				</div>
 			</div>
 		</div>

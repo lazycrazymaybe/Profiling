@@ -9,7 +9,8 @@
 		}
 
 		/**
-			@description Gets profiles data in the database. Depends on model condition
+		 * Gets profiles data in the database. Depends on model condition
+		 * @return JSON
 		*/
 		public function ajaxProfileList(){
 			$holder = $this->Administrator->dataTablesProfiles();
@@ -40,7 +41,8 @@
 		}
 
 		/**
-			@description Gets all removed profile in the database.
+		 * Gets all removed profile in the database.
+		 * @return JSON
 		*/
 		public function ajaxRemovedProfileList(){
 			$holder = $this->Administrator->dataTablesRemovedProfiles();
@@ -67,7 +69,8 @@
 		}
 
 		/**
-			@description Use to disable or enable profile
+		 * Use to disable or enable profile
+		 * @return String
 		*/
 		public function disableEnableProfile(){
 			if ($_POST) {
@@ -94,7 +97,8 @@
 		}
 
 		/**
-			@description Totally remove profile to the database.
+		 * description Totally remove profile to the database.
+		 * @return String
 		*/
 		public function deleteProfile(){
 			if ($_POST) {
@@ -107,7 +111,8 @@
 		}
 		
 		/**
-			@description Add New Profile to the database
+		 * Add New Profile to the database
+		 * @return String
 		*/
 		public function addProfile(){
 			$data['success'] 	= 0;
@@ -150,10 +155,10 @@
 			}
 		}
 
-			/**
-				*@return String
-				*@usage Use to update certain profile.
-			*/
+		/**
+		 * Use to update certain profile.
+		 * @return String
+		*/
 		public function updateProfile(){
 			$data['success'] 	= 0;
 			$data['error'] 		= 0;
@@ -216,8 +221,8 @@
 		}
 
 		/**
-			*@return Array
-			@usage Catches all the post input from adding or updating a profile info.
+		 * Catches all the post input from adding or updating a profile info.
+		 * @return Array
 		*/
 		private function staging(){
 			$name_extension 	= $this->fieldCheckerString($this->input->post('name_extension'));

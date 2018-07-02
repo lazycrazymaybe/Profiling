@@ -16,7 +16,7 @@
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
-	<link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url().'assets/img/favicon.png'?>">
+	<link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url().'assets/img/camlogo.png'?>">
 </head>
 
 <body>

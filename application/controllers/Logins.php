@@ -2,7 +2,12 @@
 
 	class Logins extends CI_Controller{
 
+		/**
+		 * Login controller
+		 * @return Int
+		*/
 		public function index(){
+			$this->load->model('User');
 			$this->load->model('Administrator');
 			$data['title'] = "Brng. Camaman-an | People Monitoring System";
 			$data['success'] = 1;
@@ -22,8 +27,8 @@
 						$this->session->set_userdata('type',$login[0]['type']);
 						$this->session->set_userdata('phone',$login[0]['phone']);
 						$this->session->set_userdata('sessionID', $key);
+						$this->User->updateUser($login[0]['empID'], ['sessionKey' => $key]);
 						$data['success'] = 1;
-						$this->Administrator->updateUser($login[0]['empID'], ['sessionKey' => $key]);
 						redirect(base_url().'Routes/dashboard');
 					}else{
 						$data['success'] = 404;
@@ -36,9 +41,12 @@
 			$this->load->view('Login',$data);
 		}
 
+		/**
+		 * Logout controller 
+		*/
 		public function logout(){
-			$this->load->model('Administrator');
-			$this->Administrator->updateUser($this->session->userdata('empID'), ['sessionKey' => NULL]);
+			$this->load->model('User');
+			$this->User->updateUser($this->session->userdata('empID'), ['sessionKey' => NULL]);
 			$this->session->sess_destroy();
 			redirect(base_url().'Logins');
 		}

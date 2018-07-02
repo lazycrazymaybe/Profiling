@@ -54,6 +54,9 @@
 									<input type="hidden" id="add_case_action" name="add_case_action" value="addCase" />
 									<input type="submit" id="add_case_action" name="add_case_action" value="Confirm" />
 								</div>
+							</form>
+						</div>
+					</div>	
 				</div>
 			</div>
 		</div>

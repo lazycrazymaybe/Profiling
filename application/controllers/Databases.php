@@ -1,34 +1,52 @@
 <?php 
 
-	class Migrations extends CI_Controller{
+	class Databases extends CI_Controller{
 
 		function __construct(){
 			parent:: __construct();
-			$this->load->model("Migration");
+			$this->load->model("Database");
 			date_default_timezone_set('Asia/Manila');
 		}
 
-		public function trial(){
-			$catcher = $this->Migration->getAllData();
-			foreach ($catcher as $value) {
-				if($value->one != ''){
-					echo "<pre>";
-					$one = rtrim($value->one,')');
-					$exp = explode('(', $one);
-					echo count($exp);
-					echo "</pre>";
-				}
+		public function backup(){
+			$this->load->dbutil();
+
+			$prefs = array(     
+			    'format'      => 'zip',             
+			    'filename'    => 'profiling.sql'
+			    );
+
+			$backup =& $this->dbutil->backup($prefs); 
+			$db_name = 'database_backup-' . date("Y-m-d-H-i-s") .'.zip';
+			
+			mkdir('D:/Profiling');
+			$save = 'D:/Profiling';
+			if(!is_dir('D:/Profiling')){
+				mkdir('E:/Profiling');
+				$save = 'E:/Profiling/'.$db_name;
+			}else{
+				$save = 'D:/Profiling/'.$db_name;
 			}
+
+			$this->load->helper('file');
+			write_file($save, $backup); 
+
+
+			$this->load->helper('download');
+			force_download($db_name, $backup);
 		}
 
+		/**
+		 * Migrate Database record from one Database to this one.
+		*/
 		public function Migrate(){
-			$catcher = $this->Migration->getAllData();
+			$catcher = $this->Database->getAllData();
 			foreach ($catcher as $value) {
 				$fname = $value->fname;
 				$lname = $value->lname;
 				$mname = $value->mname;
 				$extension = $value->extension;
-				$checker = $this->Migration->duplicateTrapper($fname,$lname,$mname,$extension);
+				$checker = $this->Database->duplicateTrapper($fname,$lname,$mname,$extension);
 				if($checker == false){
 					$form_data = array(
 						'isactive'=>1,
@@ -53,7 +71,7 @@
 						'vin'=>$value->vin,
 						'comstat'=>$value->comstat
 					);
-					$insert_id = $this->Migration->insertProfile($form_data);
+					$insert_id = $this->Database->insertProfile($form_data);
 					if($insert_id){
 						$form_data = array(
 							'profileID'=>$insert_id,
@@ -63,7 +81,7 @@
 							'sitio'=>$value->sitio,
 							'brgy'=>$value->brgy
 						);
-						$insert_id1 = $this->Migration->insertAddress($form_data);
+						$insert_id1 = $this->Database->insertAddress($form_data);
 						if($insert_id1){
 							$this->disecter($insert_id,$value->one);
 							$this->disecter($insert_id,$value->two);
@@ -87,6 +105,9 @@
 			}
 		}
 
+		/**
+		 * Helper Function 
+		*/
 		public function disecter($profileID,$string){
 			if($string != ''){
 				$disecting = rtrim($string,')');
@@ -100,7 +121,7 @@
 					'name'=>$exp[0],
 					'relation'=>$relation
 				);
-				$this->Migration->insertFamilyMember($form_data);
+				$this->Database->insertFamilyMember($form_data);
 			}
 		}
 		

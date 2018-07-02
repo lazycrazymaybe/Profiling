@@ -1,6 +1,6 @@
 <?php 
 
-	class Migration extends CI_Model{
+	class Database extends CI_Model{
 
 
 		function __construct(){

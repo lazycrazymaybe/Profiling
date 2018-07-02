@@ -13,7 +13,7 @@
 							<div class="col-md-3">
 								<a href="<?=base_url()?>Routes/employeesList">
 									<div class="metric">
-										<span class="icon"><i class="fa fa-users" style="margin-top: 15px;"></i></span>
+										<span class="icon"><i class="fa fa-user-plus" style="margin-top: 15px;"></i></span>
 										<p>
 											<span class="number" style="font-color:black"><b><?= $admins?></b></span>
 											<span class="title">Admins</span>
@@ -35,7 +35,7 @@
 							<div class="col-md-3">
 								<a href="<?=base_url()?>Routes/profiles">
 									<div class="metric">
-										<span class="icon"><i class="fa fa-list-alt" style="margin-top: 15px;"></i></span>
+										<span class="icon"><i class="fa fa-list" style="margin-top: 15px;"></i></span>
 										<p>
 											<span class="number"><b><?= $totalPeople ?></b></span>
 											<span class="title">Total Profiles</span>
@@ -210,7 +210,7 @@
 						</div>
 						<div class="panel-footer">
 							<div class="row">
-								<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Today <?= date('F')?>. Only 20 recent logs are displayed</span></div>
+								<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Today <?= date('F')?>. Only 20 new registered profiles are displayed.</span></div>
 								<div class="col-md-6 text-right"><a href="<?=base_url().'Routes/profiles'?>" class="btn btn-primary">View All Profiles</a></div>
 							</div>
 						</div>

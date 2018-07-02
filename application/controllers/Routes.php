@@ -6,16 +6,16 @@
 			parent:: __construct();
 			//Loads Administrator model 
 			$this->load->model('Administrator');
-			if($this->session->userdata('empID') == null){
+			if($this->session->userdata('sessionID') === null){
 				redirect(base_url()."Logins");
 			}
 		}
 
 		/**
-			*@param String, Array
-			*@description Load the global pages. 
+		 * Load the global pages.
+		 * @param String, Array 
 		*/
-		protected function template($pageName, $data){
+		private function template($pageName, $data){
 			$this->load->view('Header',$data);
 			$this->load->view('Sidebar',$data);
 			$this->load->view($pageName,$data);
@@ -23,85 +23,87 @@
 		}
 
 		/**
-			@description Loads the dashboard page.
+		 * Loads the dashboard page.
 		*/
 		public function dashboard(){
-			$data['title'] = "Dashboard";
-			$data['is_active'] = ['active', '', '', '', ''];
-			$overViewData = $this->Administrator->adminOverview();
+			$this->load->model('Dashboard');
+			$data['title'] = "Profiling | Dashboard";
+			$data['is_active'] = ['active', '', '', '', '', ''];
+			$overViewData = $this->Dashboard->adminOverview();
 			$data['employees'] = $overViewData['userCounter'];
 			$data['admins'] = $overViewData['adminCounter'];
 			$data['monthlyInputs'] = $overViewData['monthlyRegs'];
 			$data['totalPeople'] = $overViewData['peopleCounter'];
-			$data['newRegistrations'] = $this->Administrator->newRegistrations();
-			$data['newProfiles'] = $this->Administrator->newProfiles();
+			$data['newRegistrations'] = $this->Dashboard->newRegistrations();
+			$data['newProfiles'] = $this->Dashboard->newProfiles();
 			$this->template('Dashboard' ,$data);
 		}
 
 		/**
-			@description Loads the Employee page.
+		 * Loads the Employee page.
 		*/
 		public function employeesList(){
-			$data['is_active'] = ['', 'active', '', '', ''];
-			$data['title'] = "Employee List";
+			$data['is_active'] = ['', 'active', '', '', '', ''];
+			$data['title'] = "Profiling | Employee List";
 			$this->template('Employees' ,$data);
 		}
 
 		/**
-			@description Loads the Profile page.
+		 * Loads the Profile page.
 		*/
 		public function profiles(){
-			$data['is_active'] = ['', '', '', 'active', ''];
-			$data['title'] = "Profiles";
+			$data['is_active'] = ['', '', '', 'active', '', ''];
+			$data['title'] = "Profiling | Profiles";
 			$this->template('ProfileList' ,$data);
 		}
 
 		/**
-			*@Description Loads the RemovedProfile page.
+		 * Loads the RemovedProfile page.
 		*/
 		public function removedProfiles(){
-			$data['is_active'] = ['', '', '', '', 'active'];
-			$data['title'] = "Removed Profiles";
+			$data['is_active'] = ['', '', '', '', 'active', ''];
+			$data['title'] = "Profiling | Removed Profiles";
 			$this->template('RemovedProfileList' ,$data);
 		}
 
 		/**
-			*@description Loads the AddProfile page.
+		 * Loads the AddProfile page.
 		*/
 		public function addProfilePage(){
-			$data['is_active'] = ['', '', 'active', '', ''];
-			$data['title'] = "Add Profile";
+			$data['is_active'] = ['', '', 'active', '', '', ''];
+			$data['title'] = "Profiling | Add Profile";
 			$this->template('AddProfile' ,$data);
 		}
 
 		/**
-			@description Loads The UpdateProfilePage page.
+		 * Loads The UpdateProfilePage page.
 		*/
 		public function udpateProfilePage($profileID){
-			$data['is_active'] = ['', '', '', 'active', ''];
+			$data['is_active'] = ['', '', '', 'active', '', ''];
 			$data['data'] = $this->Administrator->fetchProfile($profileID);
 			$data['fmember'] = $this->Administrator->fetchFamilyMember($profileID);
-			$data['title'] = "Update Profile Profile";
+			$data['title'] = "Profiling | Update Profile Profile";
 			$this->template('UpdateProfile' ,$data);
 		}
 
 		/**
-			@description Loads the CasePage page.
+		 * Loads the CasePage page.
 		*/
 		public function casePage($profileID){
-			$data['is_active'] = ['', '', '', 'active', ''];
+			$this->load->model('Instance');
+			$data['is_active'] = ['', '', '', 'active', '', ''];
 			$data['profile'] = $this->Administrator->fetchProfile($profileID);
-			$data['cases'] = $this->Administrator->getAllCases($profileID);
-			$data['title'] = $data['profile']->lname.', '.$data['profile']->fname.' '.$data['profile']->mname." cases";
+			$data['cases'] = $this->Instance->getAllCases($profileID);
+			$data['title'] = 'Profiling | '.$data['profile']->lname.', '.$data['profile']->fname.' '.$data['profile']->mname." cases";
 			$this->template('CasePage' ,$data);
 		}
 
 		/**
-			@description Loads the page to add case.
+		 * Loads the page to add case.
 		*/
 		public function addCasePage($profileID){
-			$data['is_active'] = ['', '', '', 'active', ''];
-			$data['title'] = "Add Case";
+			$data['is_active'] = ['', '', '', 'active', '', ''];
+			$data['title'] = "Profiling | Add Case";
 			$data['profile'] = $this->Administrator->fetchProfile($profileID);
 			$data['fname'] = strtoupper($data['profile']->fname);
 			$data['lname'] = strtoupper($data['profile']->lname);
@@ -111,12 +113,13 @@
 		}
 
 		/**
-			@description Loads the page that will be used to update.
+		 * Loads the page that will be used to update.
 		*/
 		public function updateCasePage($caseID){
-			$data['is_active'] = ['', '', '', 'active', ''];
-			$data['title'] = "Updating Case";
-			$data['case'] = $this->Administrator->fetchCase($caseID);
+			$this->load->model('Instance');
+			$data['is_active'] = ['', '', '', 'active', '', ''];
+			$data['title'] = "Profiling | Updating Case";
+			$data['case'] = $this->Instance->fetchCase($caseID);
 			$data['profile'] = $this->Administrator->fetchProfile($data['case'][0]->profileID);
 			$data['fname'] = strtoupper($data['profile']->fname);
 			$data['lname'] = strtoupper($data['profile']->lname);
@@ -126,12 +129,21 @@
 		}
 
 		/**
-			@description Loads the user profile page.
+		 * Loads the user profile page.
 		*/
 		public function profile(){
-			$data['is_active'] = ['', '', '', '', ''];
+			$data['is_active'] = ['', '', '', '', '', ''];
 			$data['title'] = "Your Profile";
 			$this->template('Profile' ,$data);
+		}
+
+		/**
+		 * Backup database
+		*/
+		public function backupDatabase(){
+			$data['is_active'] = ['', '', '', '', '','active'];
+			$data['title'] = "Profiling | Manage Database";
+			$this->template('ManageDatabase', $data);
 		}
 	}
 

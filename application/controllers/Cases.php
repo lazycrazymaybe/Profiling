@@ -4,23 +4,25 @@
 		
 		function __construct(){
 			parent:: __construct();
-			$this->load->model('Administrator');
+			$this->load->model('Instance');
 		}
 
 		/**
-			@description Totally remove a case to the database.
+		 * Totally remove a case to the database.
+		 * @return String
 		*/
 		public function removeCase(){
 			if ($_POST) {
 				$profileID = $_POST['profileID'];
 				$caseID = $_POST['caseID'];
-				$this->Administrator->removeCase($caseID);
+				$this->Instance->removeCase($caseID);
 				echo base_url()."Routes/casePage/".$profileID;
 			}
 		}
 
 		/**
-			@description Adds a case for a particular person.
+		 * Adds a case for a particular person.
+		 * @return String
 		*/
 		public function addCase(){
 			if ($_POST) {
@@ -33,7 +35,7 @@
 							 'date'=>$this->input->post('cdate'),
 							 'description'=>$this->input->post('cdescription'),
 				);
-				$return = $this->Administrator->addCase($form_data);
+				$return = $this->Instance->addCase($form_data);
 				if($return > 0){
 					echo base_url()."Routes/casePage/".$this->input->post('profileID');
 				}else{
@@ -43,19 +45,21 @@
 		}
 
 		/**
-			@description Change case status. 
+		 * Change case status. 
+		 * @return String
 		*/
 		public function changeStatus($caseID){
-			$data = $this->Administrator->fetchCase($caseID);
+			$data = $this->Instance->fetchCase($caseID);
 			$form_data = array(
 					'status'=>"Served"
 			);
-			$this->Administrator->updateCase($caseID,$form_data);
+			$this->Instance->updateCase($caseID,$form_data);
 			redirect(base_url()."Routes/casePage/".$data[0]->profileID);
 		}
 
 		/**
-			@description Updates case.
+		 * Updates case.
+		 * @return String
 		*/
 		public function updateCase(){
 			$form_data = array(
@@ -67,7 +71,7 @@
 							 'date'=>$this->input->post('cdate'),
 							 'description'=>$this->input->post('cdescription'),
 				);
-			$return = $this->Administrator->updateCase($this->input->post('caseID'),$form_data);
+			$return = $this->Instance->updateCase($this->input->post('caseID'),$form_data);
 			if($return > 0){
 				echo base_url()."Routes/casePage/".$this->input->post('profileID');
 			}else{

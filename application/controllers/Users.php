@@ -4,11 +4,12 @@
 
 		function __construct(){
 			parent:: __construct();
-			$this->load->model('Administrator');
+			$this->load->model('User');
 		}
 
 		/**
-			@description This will create new user in the system. Used by ajax functionality.
+		 * This will create new user in the system. Used by ajax functionality.
+		 * @return Int
 		*/
 		public function createUser(){
 			if ($_POST){
@@ -27,16 +28,17 @@
 								 'type'=>$this->input->post('userType'),
 								 'isactive'=>intval($this->input->post('isActive')),
 				);
-				$response = $this->Administrator->createUser($form_data,$fname,$lname,$username);
+				$response = $this->User->createUser($form_data,$fname,$lname,$username);
 				echo $response;
 			}
 		}
 
 		/**
-			@description Fetch single user. Use by ajax.
+		 * Fetch single user. Use by ajax.
+		 * @return JSON
 		*/
 		public function fetchUser(){
-			$cather = $this->Administrator->fetchUser($_POST['empID']);
+			$cather = $this->User->fetchUser($_POST['empID']);
 			$data['empID'] = $cather->empID;
 			$data['fname'] = $cather->fname;
 			$data['lname'] = $cather->lname;
@@ -52,7 +54,8 @@
 
 
 		/**
-			@description Update user. Use by ajax.
+		 * Update user. Use by ajax.
+		 * @return JSON
 		*/
 		public function updateUser(){
 			if ($_POST) {
@@ -82,33 +85,33 @@
 										 'date'=>$this->input->post('date')
 
 				);
-				$user = $this->Administrator->fetchUser($empID);
+				$user = $this->User->fetchUser($empID);
 				//Condition to check for duplicate username entry
 				if($user->fname == $fname && $user->lname == $lname){
 					if($user->username == $username){
-						$this->Administrator->updateUser($empID,$form_data);
+						$this->User->updateUser($empID,$form_data);
 						echo "updated";
 					}else{
-						if($this->Administrator->usernameTraper($username) == true){
+						if($this->User->usernameTraper($username) == true){
 							echo "username";
 						}else{
-							$this->Administrator->updateUser($empID,$form_data);
+							$this->User->updateUser($empID,$form_data);
 							echo "updated";
 						}
 					}
 				//Check for duplicate name entry
 				}else{
-					if($this->Administrator->nameTraper($fname,$lname) == true){
+					if($this->User->nameTraper($fname,$lname) == true){
 						echo "person";
 					}else{
 						if($user->username == $username){
-							$this->Administrator->updateUser($empID,$form_data);
+							$this->User->updateUser($empID,$form_data);
 							echo "updated";
 						}else{
-							if($this->Administrator->usernameTraper($username) == true){
+							if($this->User->usernameTraper($username) == true){
 								echo "username";
 							}else{
-								$this->Administrator->updateUser($empID,$form_data);
+								$this->User->updateUser($empID,$form_data);
 								echo "updated";
 							}
 						}
@@ -118,10 +121,11 @@
 		}
 
 		/**
-			@description Gets the list of employee list in the database. Depends on model condition
+		 * Gets the list of employee list in the database. Depends on model condition
+		 * @return JSON
 		*/
 		public function ajaxEmployeeList(){
-			$holder = $this->Administrator->dataTablesEployees();
+			$holder = $this->User->dataTablesEployees();
 			$data = array();
 			//Sets up for datatables.
 			foreach ($holder as $value) {
@@ -149,8 +153,8 @@
 			//Sets the out put according to datatables set of pre-defined variables
 			$output = array(  
 	            "draw"=>intval($_POST["draw"]),  
-	            "recordsTotal"=>($this->Administrator->getAllDataEmployees()-1),  
-	            "recordsFiltered"=>($this->Administrator->filteredDataEmployees()-1),  
+	            "recordsTotal"=>($this->User->getAllDataEmployees()-1),  
+	            "recordsFiltered"=>($this->User->filteredDataEmployees()-1),  
 	            "data"=>$data  
 		    );  
 		    // echo the result for rendering
