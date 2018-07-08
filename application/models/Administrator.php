@@ -17,6 +17,14 @@
 			$query = $this->db->get();
 			return $query->result_array();
 		}
+
+		/**
+		 * Create User session
+		 * @param data(ARRAY)
+		*/
+		public function createSession($data){
+			$this->db->insert('tbl_sessions', $data);
+		}
 		
 		//Start For PROFILES Active
 		/**
@@ -30,7 +38,7 @@
 												 ->where('isactive',1);
 			if(isset($_POST['search']['value'])){
 				$searchValue = $_POST['search']['value'];
-				$this->db->where("(lname LIKE '%".$searchValue."%' OR fname LIKE '%".$searchValue."%' OR mname LIKE '%".$searchValue."%' OR birth LIKE '%".$searchValue."%' OR gender LIKE '%".$searchValue."%' OR bhw LIKE '%".$searchValue."%' OR sitio LIKE '".$searchValue."%')",null,false);
+				$this->db->where("(lname LIKE '%".$searchValue."%' OR fname LIKE '%".$searchValue."%' OR mname LIKE '%".$searchValue."%' OR birth LIKE '%".$searchValue."%' OR gender LIKE '%".$searchValue."%' OR bhw LIKE '%".$searchValue."%' OR sitio LIKE '".$searchValue."%' OR fullname LIKE '".$searchValue."%')",null,false);
 			}
 			if(isset($_POST['order'])){
 				$this->db->order_by($order_column[$_POST['order']['0']['column']],$_POST['order']['0']['dir']);
@@ -84,7 +92,7 @@
 												 ->order_by('date','DESC');
 			if(isset($_POST['search']['value'])){
 				$searchValue = $_POST['search']['value'];
-				$this->db->where("(lname LIKE '%".$searchValue."%' OR fname LIKE '%".$searchValue."%' OR mname LIKE '%".$searchValue."%' OR birth LIKE '%".$searchValue."%' OR gender LIKE '%".$searchValue."%' OR bhw LIKE '%".$searchValue."%' OR sitio LIKE '".$searchValue."%')",null,false);
+				$this->db->where("(lname LIKE '%".$searchValue."%' OR fname LIKE '%".$searchValue."%' OR mname LIKE '%".$searchValue."%' OR birth LIKE '%".$searchValue."%' OR gender LIKE '%".$searchValue."%' OR bhw LIKE '%".$searchValue."%' OR sitio LIKE '".$searchValue."%' OR fullname LIKE '".$searchValue."%')",null,false);
 			}
 			if(isset($_POST['order'])){
 				$this->db->order_by($order_column[$_POST['order']['0']['column']],$_POST['order']['0']['dir']);

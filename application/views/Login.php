@@ -2,7 +2,7 @@
 <html lang="en" class="fullscreen-bg">
 
 <head>
-	<title>Login | Klorofil - Free Bootstrap Dashboard Template</title>
+	<title>Login | Camaman-an Profiling System</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -20,6 +20,7 @@
 </head>
 
 <body>
+	<?php echo $this->session->userdata('sessionKey'); ?>
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<div class="vertical-align-wrap">
@@ -29,7 +30,7 @@
 						<div class="content">
 							<div class="header">
 								<?php $text = ''; if($success != 1){ ?>
-									<?php $success == 0 ? $text = 'Invalid Username or Password' : $text = 'This Account Is Already Login To Other Device'?>
+									<?php $success == 0 ? $text = 'Invalid Username or Password' : $text = 'This Account Is Already Login To Other Device. Please Retry To Create New Session.';?>
 								<div class="alert alert-danger alert-dismissible" role="alert">
 									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 									<i class="fa fa-info-circle"></i> <?= $text ?>

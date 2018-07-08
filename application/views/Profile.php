@@ -11,7 +11,7 @@
 						<div class="profile-main">
 							<h3 class="name"><?=$this->session->userdata('fname')." ".$this->session->userdata('lname')?></h3>
 							<h3 class="name"><?=$this->session->userdata('username')?></h3>
-							<span class="label label-primary">Administrator</span>
+							<span class="label label-primary"><?php echo $this->session->userdata('type') === 'Admin' ? 'Administrator' : 'Employee' ?></span>
 							<p></p>
 							<div class="text-center"><a href="#" data-toggle="modal" data-target="#edit-data" id="<?=$this->session->userdata('empID')?>" class="btn btn-primary edit-data"><span class="lnr lnr-pencil"></span> &nbsp;Edit Profile</a></div>
 						</div>

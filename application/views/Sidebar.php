@@ -9,11 +9,13 @@
 				<li>
 					<a href="<?=base_url().'Routes/employeesList'?>" class="<?= $is_active[1]?>"><i class="fa fa-user-circle"></i> <span>Employees</span></a>
 				</li>
+				<?php if ($this->session->userdata('type') === 'Admin'): ?>
 				<li>
-					<a href="<?=base_url().'Routes/addProfilePage'?>" class="<?= $is_active[2]?>"><i class="fa fa-users"></i> <span>Add Profile</span></a>
+					<a href="<?=base_url().'Routes/addProfilePage'?>" class="<?= $is_active[2]?>"><i class="fa fa-user-plus"></i> <span>Add Profile</span></a>
 				</li>
+				<?php endif ?>
 				<li>
-					<a href="<?=base_url()?>Routes/profiles" class="<?= $is_active[3]?>"><i class="fa fa-th-list"></i> <span>Profiles</span></a>
+					<a href="<?=base_url()?>Routes/profiles" class="<?= $is_active[3]?>"><i class="fa fa-users"></i> <span>Profiles</span></a>
 				</li>
 				<li>
 					<a href="<?=base_url()?>Routes/removedProfiles" class="<?= $is_active[4]?>"><i class="fa fa-archive"></i> <span>Removed Profiles</span></a>

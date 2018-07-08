@@ -28,9 +28,11 @@
 						$this->session->set_userdata('phone',$login[0]['phone']);
 						$this->session->set_userdata('sessionID', $key);
 						$this->User->updateUser($login[0]['empID'], ['sessionKey' => $key]);
+						$this->createSession($login[0]['empID'], $key, 'Login');
 						$data['success'] = 1;
 						redirect(base_url().'Routes/dashboard');
 					}else{
+						$this->User->updateUser($login[0]['empID'], ['sessionKey' => NULL]);
 						$data['success'] = 404;
 					}
 					
@@ -42,11 +44,31 @@
 		}
 
 		/**
+		 * @ Create Login Session for user tracking
+		 * @param profileID(INT)
+		 * @param sessionKey(STRING)
+		 * @param action(STRING)
+		 * @param ipaddress(STRING)
+		 * @return
+		*/
+		public function createSession($profileID, $sessionKey, $action, $ipaddress = null){
+			$session_data = array(
+								'profileID'=>$profileID,
+								'sessionKey'=>$sessionKey,
+								'action'=>$action,
+								'ipaddress'=>$ipaddress
+							);
+			$this->load->model('Administrator');
+			$this->Administrator->createSession($session_data);
+		}
+
+		/**
 		 * Logout controller 
 		*/
 		public function logout(){
 			$this->load->model('User');
 			$this->User->updateUser($this->session->userdata('empID'), ['sessionKey' => NULL]);
+			$this->createSession($this->session->userdata('empID'), NULL, 'Logout');
 			$this->session->sess_destroy();
 			redirect(base_url().'Logins');
 		}

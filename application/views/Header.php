@@ -43,7 +43,6 @@
 										<i class="icon-submenu lnr lnr-chevron-down"></i>
 									</a>
 									<ul class="dropdown-menu">
-										<!-- <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li> -->
 										<li><a href="<?=base_url()?>Routes/profile"><i class="fa fa-user-circle-o"></i> <span>My Profile</span></a></li>
 										<li><a href="<?= base_url().'Logins/logout'?>"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
 									</ul>

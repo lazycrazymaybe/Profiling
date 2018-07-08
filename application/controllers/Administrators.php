@@ -18,17 +18,20 @@
 			$filtered = $this->Administrator->filteredDataProfiles();
 			//Sets up for datatables
 			foreach ($holder as $value) {
+				$actionButtons = "";
+				if($this->session->userdata('type') === 'Admin'){
+					$actionButtons .= '<a href='.base_url().'Routes/udpateProfilePage/'.$value['profileID'].' class=""><button type="button" class="btn btn-primary" id="'.$value['profileID'].'"><i class="fa fa-edit"></i></button></a>'; 
+				}
+				$actionButtons .= '<a href='.base_url().'Routes/casePage/'.$value['profileID'].' class=""><button type="button" class="btn btn-success" id="'.$value['profileID'].'" style="margin-left:3px;"><i class="fa fa-list-alt"></i></button></a>
+
+					<button type="button" class="btn btn-danger remove_confirmation" id="'.$value['profileID'].'"><i class="fa fa-remove"></i></button>';
 				$sub_array = array();
 				$sub_array[] = $value['lname'].', '.$value['fname']." ".substr($value['mname'], 0,1);
 				$sub_array[] = $value['birth'];
 				$sub_array[] = $value['gender'];
 				$sub_array[] = ucwords(strtolower($value['sitio'].', '.$value['brgy']));
 				$sub_array[] = $value['bhw'];
-				$sub_array[] = '<a href='.base_url().'Routes/udpateProfilePage/'.$value['profileID'].' class=""><button type="button" class="btn btn-primary" id="'.$value['profileID'].'" style="margin-left:-6px;"><i class="fa fa-edit"></i></button></a>
-
-					<a href='.base_url().'Routes/casePage/'.$value['profileID'].' class=""><button type="button" class="btn btn-success" id="'.$value['profileID'].'" style="margin-left:-3px;"><i class="fa fa-list-alt"></i></button></a>
-
-					<button type="button" class="btn btn-danger remove_confirmation" id="'.$value['profileID'].'"><i class="fa fa-remove"></i></button>';
+				$sub_array[] = $actionButtons;
 				$data[] = $sub_array;
 			}
 			$output = array(  
@@ -239,12 +242,14 @@
 			$firstName 			= ucwords(strtolower(trim($this->input->post('firstName'))));
 			$lastName 			= ucwords(strtolower(trim($this->input->post('lastName'))));
 			$middleName 		= ucwords(strtolower(trim($this->input->post('middleName'))));
+			$fullName 			= $lastName.' '.$firstName.' '.$middleName;
 			$confirm 			= $this->input->post('yes_no');
 			$form_data 			= array(
 								    'isactive'=>1,
 								    'fname'=>$firstName,
 								    'lname'=>$lastName,
 								    'mname'=>$middleName,
+								    'fullname'=>$fullName,
 								    'extension'=>ucfirst(strtolower(trim($name_extension))),
 								    'birth'=>$this->input->post('dob'),
 								    'gender'=>$this->input->post('gender'),
