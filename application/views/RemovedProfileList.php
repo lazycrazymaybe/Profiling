@@ -11,6 +11,11 @@
 							<div class="right">
 								<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
 							</div>
+							<?php if ($this->session->userdata('type') === 'Employee'){ ?>
+								<div class="row">
+									<span class="panel-note" style="margin-left: 20px;"><b><span style="color: darkred;">Note: </span>Only an Admin can add or delete Resident Personal Informations.</b></span>
+								</div>
+							<?php } ?>
 						</div>
 						<div class="panel-body no-padding">
 							<table id="removed_profile_list" class="table table-hover">

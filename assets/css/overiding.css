@@ -140,6 +140,8 @@ dialog{
 .action_buttons .served_button{
 	background-color: #686B6D;
 	color: #fff;
+	cursor: not-allowed;
+	opacity: 0.65;
 }
 
 .action_buttons .serve_button{
@@ -155,6 +157,8 @@ dialog{
 .removed_button{
 	background-color: #AEB7C2;
 	color: #000;
+	cursor: not-allowed;
+	opacity: 0.90;
 }
 
 .input-error{

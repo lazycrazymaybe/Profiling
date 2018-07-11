@@ -46,14 +46,14 @@
 												<div class="action_buttons">
 													<a href="<?= base_url()?>Routes/updateCasePage/<?= $case->caseID?>"><button class="change_button" id="<?= $case->caseID?>">Change</button></a>
 													<?php if($case->status == "Served"){ ?>
-													<button disabled class="served_button">Served</button>
+													<button class="served_button">Served</button>
 													<?php }if($case->status == "Not Served"){ ?>
 													<a href="<?= base_url()?>Cases/changeStatus/<?= $case->caseID?>"><button class="serve_button">Serve</button></a>
 													<?php } ?>
 													<?php if($case->status == "Served"){ ?>
 													<button type="button" class="remove_button" id="<?= $case->caseID?>">Remove</button>
 													<?php }else{ ?>
-													<button disabled class="removed_button">Remove</button>
+													<button class="removed_button">Remove</button>
 													<?php } ?>
 												</div>
 											</td>
