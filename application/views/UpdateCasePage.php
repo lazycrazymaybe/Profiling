@@ -6,14 +6,16 @@
 				<div class="col-md-12">
 					<div class="panel">
 						<div class="panel-heading"  style="background: #E5E5E5">
-							<h3 class="panel-title"><span id="bloter_title">UPDATING BLOTTER RECORD FOR</span> <b><?= $fname." ".$mname." ".$lname?></b></h3>
+							<?php $text = $this->session->userdata('type') == 'Admin' ? "UPDATING" : "VIEWING" ?>
+							<h3 class="panel-title"><span id="bloter_title"><?= $text?> BLOTTER RECORD FOR</span> <b><?= $fname." ".$mname." ".$lname?></b></h3>
 							<div class="right">
 								<a href="<?= base_url()?>Routes/casePage/<?= $profileID?>"><button type="button" class="back_button">Back to cases</button></a>
 							</div>
 						</div>
 						<div class="panel-body">
+							<?php $note = $this->session->userdata('type') == 'Admin' ? 'All fields that has * are required. The rest are Optional.' : 'You\'re in view mode. You can\'t do any changes in this information.' ?>
 							<div class="row">
-								<span class="panel-note" style="margin-left: 20px;"><b><span style="color: darkred;">Note: </span>All fields that has * are required. The rest are Optional.</b></span>
+								<span class="panel-note" style="margin-left: 20px;"><b><span style="color: darkred;">Note: </span><?= $note?></b></span>
 							</div>
 							<span id="error_message"></span>
 							<form method="post" name="add_case_form" id="add_case_form">
@@ -50,10 +52,14 @@
 									</div>
 								</div>
 								<div class="col-md-12 submit_button">
-									<input type="hidden" class="form-control" name="profileID" id="profileID" value="<?= $profileID?>">
-									<input type="hidden" class="form-control" name="caseID" id="caseID" value="<?= $case[0]->caseID?>">
-									<input type="hidden" id="add_case_action" name="add_case_action" value="updateCase" />
-									<input type="submit" id="add_case_action" name="add_case_action" value="Update" />
+									<?php if($this->session->userdata('type') == 'Admin'){ ?>
+										<input type="hidden" class="form-control" name="profileID" id="profileID" value="<?= $profileID?>">
+										<input type="hidden" class="form-control" name="caseID" id="caseID" value="<?= $case[0]->caseID?>">
+										<input type="hidden" id="add_case_action" name="add_case_action" value="updateCase" />
+										<input type="submit" id="add_case_action" name="add_case_action" value="Update" />
+									<?php }else{ ?>
+										<a href="<?= base_url()?>routes/casePage/<?= $profileID?>"><button type="button" class="btn btn-primary" style="float: right;">Back</button></a>
+									<?php } ?>
 								</div>
 							</form>
 						</div>

@@ -12,7 +12,14 @@
 							<div class="right">
 								<a href="<?= base_url()?>Routes/profiles"><button type="button" class="back_button">Back to profiles</button></a>
 							</div>
-							<a href="<?= base_url()?>Routes/addCasePage/<?= $profile->profileID?>"><button type="button" id="createUser" data-toggle="modal" data-target="#edit-data" class="btn btn-success" style="margin-top:10px;background-color:#676A6D;width: 90px; height: 30px;"><i class="fa fa-plus"></i> Add Case </button></a>
+							<?php if ($this->session->userdata('type') == "Admin"){ ?>
+								<a href="<?= base_url()?>Routes/addCasePage/<?= $profile->profileID?>"><button type="button" id="createUser" data-toggle="modal" data-target="#edit-data" class="btn btn-success" style="margin-top:10px;background-color:#676A6D;width: 90px; height: 30px;"><i class="fa fa-plus"></i> Add Case </button></a>
+							<?php }else{ ?>
+								<div class="row">
+									<span class="panel-note" style="margin-left: 20px;"><b><span style="color: darkred;">Note: </span>Only an Admin can create and update Profile Case Information.</b></span>
+								</div>
+							<?php } ?>
+						
 							<span id="error_message"></span>
 						</div>
 						<div class="panel-body no-padding">
@@ -44,6 +51,7 @@
 											<td><?= $case->description?></td>
 											<td>
 												<div class="action_buttons">
+													<?php if($this->session->userdata('type') == 'Admin'){ ?>
 													<a href="<?= base_url()?>Routes/updateCasePage/<?= $case->caseID?>"><button class="change_button" id="<?= $case->caseID?>">Change</button></a>
 													<?php if($case->status == "Served"){ ?>
 													<button class="served_button">Served</button>
@@ -54,7 +62,10 @@
 													<button type="button" class="remove_button" id="<?= $case->caseID?>">Remove</button>
 													<?php }else{ ?>
 													<button class="removed_button">Remove</button>
+													<?php }}else{ ?>
+														<a href="<?= base_url()?>Routes/updateCasePage/<?= $case->caseID?>"><button class="change_button" id="<?= $case->caseID?>">View</button></a>
 													<?php } ?>
+
 												</div>
 											</td>
 										</tr>

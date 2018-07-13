@@ -6,11 +6,13 @@
 				<div class="col-md-12">
 					<div class="panel">
 						<div class="panel-heading"  style="background: #E5E5E5">
-							<h3 class="panel-title">UPDATE PROFILE</h3>
+							<?php $text = $this->session->userdata('type') == 'Admin' ? 'UPDATE' : 'VIEWING' ?>
+							<h3 class="panel-title"><?= $text?> RESIDENT PROFILE INFORMATION</h3>
 						</div>
 						<div class="panel-body">
+							<?php $text = $this->session->userdata('type') == 'Admin' ? 'All fields that has * are required. The rest are Optional.' : 'You\'re in view mode. You can\'t do any changes in this information.' ?>
 							<div class="row">
-								<span class="panel-note" style="margin-left: 20px;"><b><span style="color: darkred;">Note: </span>All fields that has * are required. The rest are Optional.</b></span>
+								<span class="panel-note" style="margin-left: 20px;"><b><span style="color: darkred;">Note: </span><?= $text?></b></span>
 							</div>
 							<span id="error_message"></span>
 							<form method="post" name="add_profile_form" id="add_profile_form">
@@ -165,11 +167,15 @@
 									</table>
 								</div>
 								<div class="col-md-12 submit_button">
-									<input type="hidden" class="form-control" name="add_profile_option" value="updateProfile" id="add_profile_option">
-									<input type="hidden" class="form-control" name="yes_no" value="no" id="yes_no">
-									<input type="hidden" class="form-control" name="addressID" value="<?=$data->addressID?>" id="addressID">
-									<input type="hidden" class="form-control" name="profileID" value="<?=$data->profileID?>" id="profileID">
-									<input type="submit" id="add_profile_action" name="add_profile_action" value="Update Profile" style="width: 150px" />
+									<?php if($this->session->userdata('type') == 'Admin'){ ?>
+										<input type="hidden" class="form-control" name="add_profile_option" value="updateProfile" id="add_profile_option">
+										<input type="hidden" class="form-control" name="yes_no" value="no" id="yes_no">
+										<input type="hidden" class="form-control" name="addressID" value="<?=$data->addressID?>" id="addressID">
+										<input type="hidden" class="form-control" name="profileID" value="<?=$data->profileID?>" id="profileID">
+										<input type="submit" id="add_profile_action" name="add_profile_action" value="Update Profile" style="width: 150px" />
+									<?php }else{ ?>
+										<a href="<?= base_url()?>routes/profiles"><button type="button" class="btn btn-primary" style="float: right;">Back</button></a>
+									<?php } ?>
 								</div>
 						</div>
 					</div>

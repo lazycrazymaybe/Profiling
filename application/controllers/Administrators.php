@@ -19,19 +19,23 @@
 			//Sets up for datatables
 			foreach ($holder as $value) {
 				$actionButtons = "";
-				if($this->session->userdata('type') === 'Admin'){
-					$actionButtons .= '<a href='.base_url().'Routes/udpateProfilePage/'.$value['profileID'].' class=""><button type="button" class="btn btn-primary" id="'.$value['profileID'].'"><i class="fa fa-edit"></i></button></a>
 
-					<a href='.base_url().'Routes/casePage/'.$value['profileID'].' class=""><button type="button" class="btn btn-success" id="'.$value['profileID'].'" style="margin-left:3px;"><i class="fa fa-list-alt"></i></button></a>
+				if($this->session->userdata('type') === 'Employee'){
+					$actionButtons .= '
+						<a href='.base_url().'Routes/udpateProfilePage/'.$value['profileID'].' class=""><button type="button" class="btn btn-primary" id="'.$value['profileID'].'"><i class="fa fa-eye"></i></button></a>
 
-					<button type="button" class="btn btn-danger remove_confirmation" id="'.$value['profileID'].'"><i class="fa fa-remove"></i></button>'; 
-				}else{
-					$actionButtons .= '<a href='.base_url().'Routes/udpateProfilePage/'.$value['profileID'].' class=""><button type="button" class="btn btn-primary" id="'.$value['profileID'].'" disabled><i class="fa fa-edit"></i></button></a>
-
-						<a href='.base_url().'Routes/casePage/'.$value['profileID'].' class=""><button type="button" class="btn btn-success" id="'.$value['profileID'].'" style="margin-left:3px;" disabled><i class="fa fa-list-alt"></i></button></a>
+						<a href='.base_url().'Routes/casePage/'.$value['profileID'].' class=""><button type="button" class="btn btn-success" id="'.$value['profileID'].'" style="margin-left:3px;"><i class="fa fa-list-alt"></i></button></a>	
 
 						<button type="button" class="btn btn-danger remove_confirmation" id="'.$value['profileID'].'" disabled><i class="fa fa-remove"></i></button>';
+				}else{
+					$actionButtons .= '	
+						<a href='.base_url().'Routes/udpateProfilePage/'.$value['profileID'].' class=""><button type="button" class="btn btn-primary" id="'.$value['profileID'].'"><i class="fa fa-edit"></i></button></a>
+
+						<a href='.base_url().'Routes/casePage/'.$value['profileID'].' class=""><button type="button" class="btn btn-success" id="'.$value['profileID'].'" style="margin-left:3px;"><i class="fa fa-list-alt"></i></button></a>
+
+						<button type="button" class="btn btn-danger remove_confirmation" id="'.$value['profileID'].'"><i class="fa fa-remove"></i></button>';
 				}
+
 				$sub_array = array();
 				$sub_array[] = $value['lname'].', '.$value['fname']." ".substr($value['mname'], 0,1);
 				$sub_array[] = $value['birth'];
